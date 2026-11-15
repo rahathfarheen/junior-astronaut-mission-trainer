@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Activity, ArrowDownRight, ArrowUpRight, Award, Bell, Check, ChevronDown, CircleHelp, Compass, Download, Globe2, Headphones, Menu, Orbit, Play, Radio, Rocket, Settings2, ShieldCheck, Sparkles, Star, Sun, Volume2, VolumeX, Wifi, X } from 'lucide-react';
+import { Activity, ArrowUpRight, Award, Bell, Check, ChevronDown, CircleHelp, Globe2, Menu, Orbit, Radio, Rocket, Settings2, ShieldCheck, Sparkles, Star, Sun, Volume2, VolumeX, X } from 'lucide-react';
 import { missions, nextRankXp, progressPercent, rankForXp } from './data/missions';
 import { getApod, getIssPosition, getNearEarthCount } from './services/nasa';
 import { useMissionStore } from './store/useMissionStore';
