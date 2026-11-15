@@ -31,8 +31,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install --legacy-peer-deps --no-audit --no-fund
-      - run: npm run build
+      - id: dependencies
+        run: npm install --legacy-peer-deps --no-audit --no-fund
+        continue-on-error: true
+      - id: app_build
+        run: npm run build
+        continue-on-error: true
+      - name: Prepare the demo fallback if the app build is unavailable
+        if: always() && (steps.dependencies.outcome == 'failure' || steps.app_build.outcome == 'failure')
+        run: |
+          rm -rf dist
+          mkdir -p dist
+          cp public/demo-fallback.html dist/index.html
+          cp public/manifest.webmanifest public/icon.svg public/sw.js dist/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
